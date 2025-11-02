@@ -57,13 +57,11 @@ func main() {
 				fmt.Println("----------------------------------")
 			}
 		case 2:
-			// --- This is the "Writing" logic from your example ---
 			fmt.Print("\nEnter the new content to write: ")
-			scanner.Scan() // Use scanner to read the content line
+			scanner.Scan()
 			contentToWrite := scanner.Text()
 
 			fmt.Printf("\n--- Writing to file '%s' ---\n", filename)
-			// os.WriteFile creates the file if it doesn't exist, or overwrites it.
 			err = os.WriteFile(filename, []byte(contentToWrite), 0644)
 			if err != nil {
 				fmt.Printf("Error writing to file '%s': %v\n", filename, err)
@@ -78,7 +76,3 @@ func main() {
 		}
 	}
 }
-
-// NOTE: For larger files, you would use os.Open and bufio.NewScanner
-// or bufio.NewReader for memory-efficient, line-by-line reading.
-// os.WriteFile and os.ReadFile are best for smaller files (a few megabytes).
